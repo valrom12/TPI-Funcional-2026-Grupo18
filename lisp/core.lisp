@@ -5,20 +5,31 @@
 ;; IMPACTO: no destructiva
 ;; =================================================================
 
-(defun transicion ( color-actual cambiar-a)
+(defun transicion (color-actual cambiar-a)
   (cond
-    ((and (eq color-actual 'rojo) (eq cambiar-a 'amarillo-intermitente))
-     (list color-actual "cambiar-a-amarillo-intermitente")
-    )
-    ((and (eq color-actual 'amarillo-intermitente) (eq cambiar-a 'amarillo))
-     (list color-actual "cambiar-a-amarillo")
-    )
-    ((and (eq color-actual 'amarillo) (eq cambiar-a 'verde))
-     (list color-actual "cambiar-a-verde")
-    )
-    ((and (eq color-actual 'verde) (eq cambiar-a 'rojo))
-     (list color-actual "cambiar-a-rojo")
-    )
+    ((and (equal color-actual 'en-rojo) (equal cambiar-a 'verde))
+     (list color-actual "cambiar-a-verde"))
+
+    ((and (equal color-actual 'en-verde) (equal cambiar-a 'amarillo))
+     (list color-actual "cambiar-a-amarillo"))
+
+    ((and (equal color-actual 'amarillo) (equal cambiar-a 'rojo))
+     (list color-actual "cambiar-a-rojo"))
+
     (t (list color-actual 'accion-por-defecto))))
-    )
-)
+
+
+;; ========================================================
+;; FUNCIÓN: timer
+;; NATURALEZA: Pura
+;; ESTRATEGIA: Función Predicado
+;; IMPACTO: No destructiva
+;; ========================================================
+
+(defun timer (tiempou)
+  (let (resto)
+    (setq resto (mod tiempou 216))
+      (cond 
+          ((< resto 90) 'en-rojo)
+          ((< resto 210) 'en-verde)
+          (t 'en-amarillo))))
