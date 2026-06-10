@@ -1,7 +1,12 @@
 ;; =================================================================
+;; TPI- SISTEMAS DE SEMAFOROS INTELIGENTES 
+;; Lenguaje: Common Lisp
+;; =================================================================
+;; REQUERIMIENTO 1
+;; =================================================================
 ;; FUNCION: transicion
 ;; NATURALEZA: Pura
-;; ESTRATEGIA: predicado 
+;; ESTRATEGIA: condicional  
 ;; IMPACTO: no destructiva
 ;; =================================================================
 
