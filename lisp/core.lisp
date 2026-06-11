@@ -37,3 +37,13 @@
       ((< resto 90)  'en-rojo)
       ((< resto 210) 'en-verde)
       (t  'en-amarillo))))
+;; ========================================================
+;; REQUERIMIENTO 3: Sistema de Auditoría
+;; FUNCION: auditoria-cambio
+;; NATURALEZA: Impura (Efecto secundario: imprime en consola)
+;; ESTRATEGIA: Secuencial
+;; IMPACTO: No destructiva
+;; ========================================================
+(defun auditoria-cambio (tiempo color-anterior color-nuevo)
+  ;; Utiliza FORMAT para la salida estándar por pantalla
+  (format t "Tiempo A: la luz ha cambiado de ~A a ~A%" tiempo color-anterior color-nuevo))
