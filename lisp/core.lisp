@@ -2,7 +2,7 @@
 ;; TPI- SISTEMAS DE SEMAFOROS INTELIGENTES 
 ;; Lenguaje: Common Lisp
 ;; =================================================================
-;; REQUERIMIENTO 1
+;; REQUERIMIENTO 1: Estados de Transición 
 ;; =================================================================
 ;; FUNCION: transicion
 ;; NATURALEZA: Pura
@@ -23,7 +23,8 @@
 
     (t (list color-actual 'accion-por-defecto))))
 
-
+;; =================================================================
+;; REQUERIMIENTO 2: Temporizador Automático 
 ;; ========================================================
 ;; FUNCIÓN: timer
 ;; NATURALEZA: Pura
@@ -75,7 +76,7 @@
   )
 
 ;; ========================================================
-;;  REQUERIMIENTO 5: Cálculo de Ciclos por Tiempo 
+;;  REQUERIMIENTO 5: Planificación Temporal
 ;; FUNCION: ciclos-por-tiempo
 ;; NATURALEZA: Pura
 ;; ESTRATEGIA: Composicion
@@ -89,4 +90,33 @@
   )
 )
 
+;; ========================================================
+;;  REQUERIMIENTO 6: Informe de Distribución Temporal 
+;; ========================================================
+;; FUNCION: distribucion-temporal
+;; NATURALEZA: Pura
+;; ESTRATEGIA: Composicion
+;; IMPACTO: No destructiva
+;; ========================================================
+
+(defun distribucion-temporal ()
+
+  (let ((ciclo (duracion-ciclo 90 6 120)))
+
+    (list
+
+     (list 'rojo
+           (* (/ 90.0 ciclo) 100)
+      )
+
+     (list 'amarillo
+           (* (/ 6.0 ciclo) 100)
+      )
+
+     (list 'verde
+           (* (/ 120.0 ciclo) 100)
+      )
+    )
+  )
+)
 
