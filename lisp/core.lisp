@@ -55,11 +55,20 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 (defun auditoria-cambio (tiempo color-anterior color-nuevo)
-  ;; Utiliza FORMAT para la salida estándar por pantalla
-  (format t "Tiempo ~A: la luz ha cambiado de ~A a ~A%" 
-            tiempo 
-            color-anterior 
+ (let ((fecha
+         (local-time:format-timestring
+          nil
+          (local-time:unix-to-timestamp tiempo)
+          :format '(:year "-" :month "-" :day
+                    " "
+                    :hour ":" :min ":" :sec))))
+
+    (format t
+            "Tiempo ~A: la luz ha cambiado de ~A a ~A~%"
+            fecha
+            color-anterior
             color-nuevo)
+  )
 )
 
 ;; ========================================================
