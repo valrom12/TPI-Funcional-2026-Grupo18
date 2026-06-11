@@ -18,17 +18,19 @@
     ((and (equal color-actual 'en-verde) (equal cambiar-a 'amarillo))
      (list color-actual "cambiar-a-amarillo"))
 
-    ((and (equal color-actual 'amarillo) (equal cambiar-a 'rojo))
+    ((and (equal color-actual 'en-amarillo) (equal cambiar-a 'rojo))
      (list color-actual "cambiar-a-rojo"))
 
-    (t (list color-actual 'accion-por-defecto))))
+    (t (list color-actual 'accion-por-defecto))
+  )
+)
 
 ;; =================================================================
 ;; REQUERIMIENTO 2: Temporizador Automático 
 ;; ========================================================
 ;; FUNCIÓN: timer
 ;; NATURALEZA: Pura
-;; ESTRATEGIA: Función Predicado
+;; ESTRATEGIA: Condicional
 ;; IMPACTO: No destructiva
 ;; ========================================================
 
@@ -37,7 +39,9 @@
     (cond
       ((< resto 90)  'en-rojo)
       ((< resto 210) 'en-verde)
-      (t  'en-amarillo))))
+      (t  'en-amarillo))
+  )
+)
 
 ;; ========================================================
 ;; REQUERIMIENTO 3: Sistema de Auditoría
@@ -48,7 +52,8 @@
 ;; ========================================================
 (defun auditoria-cambio (tiempo color-anterior color-nuevo)
   ;; Utiliza FORMAT para la salida estándar por pantalla
-  (format t "Tiempo A: la luz ha cambiado de ~A a ~A%" tiempo color-anterior color-nuevo))
+  (format t "Tiempo A: la luz ha cambiado de ~A a ~A%" tiempo color-anterior color-nuevo)
+)
 
 ;; ========================================================
 ;; REQUERIMIENTO 4a: Análisis de Ciclos (Duración)
@@ -58,7 +63,8 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 (defun duracion-ciclo (t-rojo t-amarillo t-verde)
-  (+ t-rojo t-amarillo t-verde))
+  (+ t-rojo t-amarillo t-verde)
+)
 
 ;; ========================================================
 ;; REQUERIMIENTO 4b: Recomendación de Ciclos
@@ -72,8 +78,8 @@
     ((< duracion 35) "El ciclo es demasiado corto. Dificil acomodacion psicologica.")
     ((> duracion 150) "El ciclo es demasiado largo. Dificil acomodacion psicologica.")
     (t "El ciclo esta dentro del rango optimo (35-150 segundos).")
-    )
   )
+)
 
 ;; ========================================================
 ;;  REQUERIMIENTO 5: Planificación Temporal
