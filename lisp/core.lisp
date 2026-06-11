@@ -70,4 +70,23 @@
   (cond
     ((< duracion 35) "El ciclo es demasiado corto. Dificil acomodacion psicologica.")
     ((> duracion 150) "El ciclo es demasiado largo. Dificil acomodacion psicologica.")
-    (t "El ciclo esta dentro del rango optimo (35-150 segundos).")))
+    (t "El ciclo esta dentro del rango optimo (35-150 segundos).")
+    )
+  )
+
+;; ========================================================
+;;  REQUERIMIENTO 5: Cálculo de Ciclos por Tiempo 
+;; FUNCION: ciclos-por-tiempo
+;; NATURALEZA: Pura
+;; ESTRATEGIA: Composicion
+;; IMPACTO: No destructiva
+;; ========================================================
+
+(defun ciclos-por-tiempo (minutos)
+  (floor
+   (/ (* minutos 60)
+      (duracion-ciclo 90 6 120))
+  )
+)
+
+
