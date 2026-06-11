@@ -1,12 +1,10 @@
 ;; =================================================================
 ;; TPI- SISTEMAS DE SEMAFOROS INTELIGENTES 
 ;; Lenguaje: Common Lisp
-
-;;;; ======================================================
-;;;; CARGA DE LIBRERIA LOCAL-TIME
-;;;; ======================================================
+;; ======================================================
+;; CARGA DE LIBRERIA LOCAL-TIME
+;; ======================================================
 (ql:quickload :local-time)
-(use-package :local-time)
 ;; =================================================================
 ;; REQUERIMIENTO 1: Estados de Transición 
 ;; =================================================================
@@ -58,7 +56,10 @@
 ;; ========================================================
 (defun auditoria-cambio (tiempo color-anterior color-nuevo)
   ;; Utiliza FORMAT para la salida estándar por pantalla
-  (format t "Tiempo A: la luz ha cambiado de ~A a ~A%" tiempo color-anterior color-nuevo)
+  (format t "Tiempo ~A: la luz ha cambiado de ~A a ~A%" 
+            tiempo 
+            color-anterior 
+            color-nuevo)
 )
 
 ;; ========================================================
