@@ -32,9 +32,8 @@
 ;; ========================================================
 
 (defun timer (tiempou)
-  (let (resto)
-    (setq resto (mod tiempou 216))
-      (cond 
-          ((< resto 90) 'en-rojo)
-          ((< resto 210) 'en-verde)
-          (t 'en-amarillo))))
+  (let ((resto (mod tiempou 216)))
+    (cond
+      ((< resto 90)  'en-rojo)
+      ((< resto 210) 'en-verde)
+      (t  'en-amarillo))))
