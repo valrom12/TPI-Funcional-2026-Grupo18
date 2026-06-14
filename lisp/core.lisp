@@ -144,6 +144,10 @@
 
 ;; =================================================================
 ;; REQUERIMIENTO 7: Aseguramiento de la calidad
+;; FUNCION: asfuramiento-calidad
+;; NATURALEZA: Impura
+;; ESTRATEGIA: Función de Orden Superior
+;; IMPACTO: No destructiva
 ;; =================================================================
 
 ;; -----------------------------------------------------------------
