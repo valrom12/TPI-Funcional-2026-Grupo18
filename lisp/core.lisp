@@ -142,3 +142,77 @@
   )
 )
 
+;; =================================================================
+;; REQUERIMIENTO 7: Aseguramiento de la calidad
+;; =================================================================
+
+;; -----------------------------------------------------------------
+;; PRUEBAS PARA EL REQUERIMIENTO 1: transicion
+;; -----------------------------------------------------------------
+
+(transicion 'en-rojo 'verde)
+
+(transicion 'en-rojo 'amarillo)
+
+;; -----------------------------------------------------------------
+;; PRUEBAS PARA EL REQUERIMIENTO 2: timer
+;; -----------------------------------------------------------------
+
+(timer 50)
+;; Devuelve: EN-ROJO
+
+(timer 100)
+;; Devuelve: EN-VERDE
+
+(timer 212)
+;; Devuelve: EN-AMARILLO
+
+;; -----------------------------------------------------------------
+;; PRUEBAS PARA EL REQUERIMIENTO 3: auditoria-cambio
+;; -----------------------------------------------------------------
+
+(auditoria-cambio 1700000000 'en-rojo 'en-verde)
+
+(auditoria-cambio 0 "ROJO" "VERDE")
+
+;; -----------------------------------------------------------------
+;; PRUEBAS PARA EL REQUERIMIENTO 4a: duracion-ciclo
+;; -----------------------------------------------------------------
+
+
+(duracion-ciclo 90 6 120)
+
+(duracion-ciclo 45.5 3.2 60.0)
+;; Devuelve: 108.7
+
+;; Generación de Errores: Pasar argumentos que no sean números al operador aritmético +
+;; (duracion-ciclo 90 "6 segundos" 120) ;; ERROR: "6 segundos" no es un número.
+
+
+;; -----------------------------------------------------------------
+;; PRUEBAS PARA EL REQUERIMIENTO 4b: recomendacion-ciclo
+;; -----------------------------------------------------------------
+
+;; Camino Normal: Duración óptima intermedia
+(recomendacion-ciclo 90)
+
+(recomendacion-ciclo 20)
+
+(recomendacion-ciclo 180)
+
+;; -----------------------------------------------------------------
+;; PRUEBAS PARA EL REQUERIMIENTO 5: ciclos-por-tiempo
+;; -----------------------------------------------------------------
+
+
+(ciclos-por-tiempo 60)
+
+(ciclos-por-tiempo 2)
+
+;; -----------------------------------------------------------------
+;; PRUEBAS PARA EL REQUERIMIENTO 6: distribucion-temporal
+;; -----------------------------------------------------------------
+
+(distribucion-temporal) ;; Devuelve: ((ROJO 41.666668) (AMARILLO 2.7777777) (VERDE 55.555557))
+
+;; Camino Alternativo: Al no poseer parámetros de entrada, no presenta caminos alternativos de ejecución.
