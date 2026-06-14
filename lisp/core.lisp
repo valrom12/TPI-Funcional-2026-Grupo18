@@ -220,3 +220,70 @@
 (distribucion-temporal) ;; Devuelve: ((ROJO 41.666668) (AMARILLO 2.7777777) (VERDE 55.555557))
 
 ;; Camino Alternativo: Al no poseer parámetros de entrada, no presenta caminos alternativos de ejecución.
+
+
+;; -----------------------------------------------------------------
+;; ITERACION 2
+;; -----------------------------------------------------------------
+
+;; ========================================================
+;; FUNCIÓN: transicion
+;; NATURALEZA: Pura
+;; ESTRATEGIA: Función Predicado
+;; IMPACTO: No destructiva
+;; NOTA: Incluye estado en-amarillo-intermitente entre cada transición
+;; ========================================================
+
+(defun transicion (color-actual cambiar-a)
+  (cond
+    ((and (equal color-actual 'en-rojo) (equal cambiar-a 'en-amarillo-intermitente))
+     (list color-actual "cambiar-a-amarillo-intermitente"))
+
+    ((and (equal color-actual 'en-amarillo-intermitente) (equal cambiar-a 'en-verde))
+     (list color-actual "cambiar-a-verde"))
+
+    ((and (equal color-actual 'en-verde) (equal cambiar-a 'en-amarillo-intermitente))
+     (list color-actual "cambiar-a-amarillo-intermitente"))
+
+    ((and (equal color-actual 'en-amarillo-intermitente) (equal cambiar-a 'en-amarillo))
+     (list color-actual "cambiar-a-amarillo"))
+
+    ((and (equal color-actual 'en-amarillo) (equal cambiar-a 'en-amarillo-intermitente))
+     (list color-actual "cambiar-a-amarillo-intermitente"))
+
+    ((and (equal color-actual 'en-amarillo-intermitente) (equal cambiar-a 'en-rojo))
+     (list color-actual "cambiar-a-rojo"))
+
+    (t
+     (list color-actual 'accion-por-defecto))))
+
+;; ========================================================
+;; FUNCIÓN: timer
+;; NATURALEZA: Pura
+;; ESTRATEGIA: Función Predicado
+;; IMPACTO: No destructiva
+;; NOTA: Ciclo de 225s con intermitencias entre cada transición
+;; ========================================================
+
+(defun timer (tiempou)
+  (let ((resto (mod tiempou 225)))
+    (cond
+      ((< resto 90)  'en-rojo)                
+      ((< resto 93)  'en-amarillo-intermitente)   
+      ((< resto 213) 'en-verde)                  
+      ((< resto 216) 'en-amarillo-intermitente)   
+      ((< resto 222) 'en-amarillo)                
+      (t             'en-amarillo-intermitente)   
+      )))
+
+;; ========================================================
+;; FUNCIÓN: duracion-ciclo
+;; NATURALEZA: Pura
+;; ESTRATEGIA: Función Simple
+;; IMPACTO: No destructiva
+;; NOTA: Incluye 3 períodos de intermitencia de 3s cada uno
+;; ========================================================
+
+(defun duracion-ciclo (t-rojo t-amarillo t-verde)
+  (+ t-rojo t-amarillo t-verde (* 3 3)))
+
