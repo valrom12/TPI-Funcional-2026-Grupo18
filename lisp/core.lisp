@@ -287,3 +287,41 @@
 (defun duracion-ciclo (t-rojo t-amarillo t-verde)
   (+ t-rojo t-amarillo t-verde (* 3 3)))
 
+;; ========================================================
+;; EXTENSION 2: Persistencia de Datos
+ ;; FUNCION: informe
+ ;; NATURALEZA: Impura
+ ;; ESTRATEGIA: Funciones de Orden Superior (mapc) 
+;; IMPACTO: No destructiva
+ ;; ========================================================
+
+(defun informe (datos)
+ (with-open-file (stream "informe-ejecucion-semaforo.txt"
+ :direction :output
+ :if-exists :supersede
+ :if-does-not-exist :create)
+ (format stream "Informe de Ejecución del Sistema Semafórico~%")
+ (format stream "=========================================~%")
+ ;; Se utiliza mapc por ser la función de orden superior óptima para iterar aplicando
+ ;; efectos secundarios sin generar una lista nueva en memoria. 
+(mapc #'(lambda (registro)
+ (let ((fecha-hora (first registro)) 
+(color-anterior (second registro)) 
+(color-nuevo (third registro)))
+ (format stream "~A - Transición: ~A → ~A~%" 
+fecha-hora color-anterior color-nuevo))) datos) 
+(format stream "~%--- Fin del Informe ---")))
+;; Camino Normal: Se pasa una lista con registros simulados (con fechas legibles ya procesadas) ;; Ejecución:
+ ;; (informe '(("2026-06-04 14:30:15" "ROJO" "VERDE")
+ ;; ("2026-06-04 14:32:15" "VERDE" "AMARILLO") 
+;; ("2026-06-04 14:32:21" "AMARILLO" "ROJO"))) 
+;; Devuelve: "--- Fin del Informe ---" y crea el archivo "informe-ejecucion-semaforo.txt"
+
+;; Camino Alternativo: Lista de datos vacia (el sistema no entra en el mapc y genera un informe limpio) 
+;; Ejecucion:
+ ;; (informe nil)
+ ;; Devuelve: "--- Fin del Informe ---" con la cabecera y el cierre del archivo vacíos
+
+;; Generación de Errores: Pasar un atomo en lugar de una lista estructurada impedira que mapc opere.
+ ;; (informe "registro-unico") 
+;; ERROR: El argumento no es una lista sobre la cual iterar
