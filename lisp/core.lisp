@@ -325,3 +325,35 @@ fecha-hora color-anterior color-nuevo))) datos)
 ;; Generación de Errores: Pasar un atomo en lugar de una lista estructurada impedira que mapc opere.
  ;; (informe "registro-unico") 
 ;; ERROR: El argumento no es una lista sobre la cual iterar
+
+
+;; ======================================================
+;; CARGA DE LIBRERIA LOCAL-TIME MEDIANTE QUICKLISP
+;; ======================================================
+
+(ql:quickload :local-time)
+
+;; ========================================================
+;; REQUERIMIENTO 3: Sistema de Auditoría (Modificado)
+;; FUNCION: auditoria-cambio
+;; NATURALEZA: Impura (Efecto secundario: imprime en consola)
+;; ESTRATEGIA: Secuencial
+;; IMPACTO: No destructiva
+;; ========================================================
+
+(defun auditoria-cambio (tiempo color-anterior color-nuevo)
+  (let ((fecha
+         (local-time:format-timestring
+          nil
+          (local-time:unix-to-timestamp tiempo)
+          :format '( :year "-" (:month 2) "-" (:day 2) 
+                    " " 
+                    (:hour 2) ":" (:min 2) ":" (:sec 2) ))))
+
+    (format t 
+            "~A la luz ha cambiado de ~A a ~A~%" 
+            fecha 
+            color-anterior 
+            color-nuevo)
+  )
+)
