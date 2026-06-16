@@ -33,7 +33,7 @@ Ademas, incluye auditoría con fechas legibles gracias a la librería **local-ti
 * Validacion de transiciones
 
 ## Requerimiento 2
-* Funcion timer
+* Funcion timer-semaforo
 * Calculo del color segun el tiempo
 
 ## Requerimiento 3
@@ -78,6 +78,13 @@ Para ejecutar el proyecto se requiere:
 - Quicklisp
 - local-time
 
+Carga de dependencias:
+
+```lisp
+(load "C:/Users/usuario/quicklisp/setup.lisp")
+(ql:quickload :local-time)
+```
+
 Instalación:
 
 ```lisp
@@ -97,7 +104,7 @@ Ejemplos:
 ```lisp
 (transicion 'en-rojo 'verde)
 
-(timer 100)
+(timer-semaforo 100)
 
 (auditoria-cambio 1717520000 'en-rojo 'en-verde)
 
@@ -108,6 +115,7 @@ Ejemplos:
 (ciclos-por-tiempo 15)
 
 (distribucion-temporal)
+```
 
 ## Estructura del repositorio
 ```
