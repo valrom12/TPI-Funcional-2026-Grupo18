@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/portada.png" alt="Sistema de Semaforos Inteligentes" width="100%">
+</p>
+
 # Sistema de semaforos inteligentes- Grupo 18
 
 ## Trabajo practico integrador 2026: Programacion Funcional
