@@ -11,8 +11,9 @@
 - Gonzalez, Rocio Anabel - @Anabel0710
 - Romani, Valentino - @valrom12
 - Gomez, Matias Gabriel - @MatiasGabriel
-- Lafuente, Noelia Magali -  @
-- Bereciartua Serpa, Osvaldo Agustin - @
+- Lafuente, Noelia Magali -  @noelialafuente18
+- Bereciartua Serpa, Osvaldo Agustin - @agustín-bereciartua
+
 
 ## Objetivo
 El objetivo es modelar un sistema de semáforos inteligentes utilizando **Common Lisp** utilizando los principios del paradigma funcional:
