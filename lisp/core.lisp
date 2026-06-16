@@ -32,13 +32,13 @@
 ;; =================================================================
 ;; REQUERIMIENTO 2: Temporizador Automático 
 ;; ========================================================
-;; FUNCIÓN: timer
+;; FUNCIÓN: timer-semaforo 
 ;; NATURALEZA: Pura
 ;; ESTRATEGIA: Condicional
 ;; IMPACTO: No destructiva
 ;; ========================================================
 
-(defun timer (tiempou)
+(defun timer-semaforo  (tiempou)
   (let ((resto (mod tiempou 216)))
     (cond
       ((< resto 90)  'en-rojo)
@@ -144,7 +144,7 @@
 
 ;; =================================================================
 ;; REQUERIMIENTO 7: Aseguramiento de la calidad
-;; FUNCION: asfuramiento-calidad
+;; FUNCION: aseguramiento-calidad
 ;; NATURALEZA: Impura
 ;; ESTRATEGIA: Función de Orden Superior
 ;; IMPACTO: No destructiva
@@ -159,16 +159,16 @@
 (transicion 'en-rojo 'amarillo)
 
 ;; -----------------------------------------------------------------
-;; PRUEBAS PARA EL REQUERIMIENTO 2: timer
+;; PRUEBAS PARA EL REQUERIMIENTO 2: timer-semaforo
 ;; -----------------------------------------------------------------
 
-(timer 50)
+(timer-semaforo 50)
 ;; Devuelve: EN-ROJO
 
-(timer 100)
+(timer-semaforo 100)
 ;; Devuelve: EN-VERDE
 
-(timer 212)
+(timer-semaforo 212)
 ;; Devuelve: EN-AMARILLO
 
 ;; -----------------------------------------------------------------
@@ -227,14 +227,14 @@
 ;; -----------------------------------------------------------------
 
 ;; ========================================================
-;; FUNCIÓN: transicion
+;; FUNCIÓN: transicion-intermitente
 ;; NATURALEZA: Pura
 ;; ESTRATEGIA: Función Predicado
 ;; IMPACTO: No destructiva
 ;; NOTA: Incluye estado en-amarillo-intermitente entre cada transición
 ;; ========================================================
 
-(defun transicion (color-actual cambiar-a)
+(defun transicion-intermitente (color-actual cambiar-a)
   (cond
     ((and (equal color-actual 'en-rojo) (equal cambiar-a 'en-amarillo-intermitente))
      (list color-actual "cambiar-a-amarillo-intermitente"))
@@ -258,14 +258,14 @@
      (list color-actual 'accion-por-defecto))))
 
 ;; ========================================================
-;; FUNCIÓN: timer
+;; FUNCIÓN: timer-semaforo-intermitente 
 ;; NATURALEZA: Pura
 ;; ESTRATEGIA: Función Predicado
 ;; IMPACTO: No destructiva
 ;; NOTA: Ciclo de 225s con intermitencias entre cada transición
 ;; ========================================================
 
-(defun timer (tiempou)
+(defun timer-semaforo-intermitente  (tiempou)
   (let ((resto (mod tiempou 225)))
     (cond
       ((< resto 90)  'en-rojo)                
@@ -277,14 +277,14 @@
       )))
 
 ;; ========================================================
-;; FUNCIÓN: duracion-ciclo
+;; FUNCIÓN: duracion-ciclo-intermitente
 ;; NATURALEZA: Pura
 ;; ESTRATEGIA: Función Simple
 ;; IMPACTO: No destructiva
 ;; NOTA: Incluye 3 períodos de intermitencia de 3s cada uno
 ;; ========================================================
 
-(defun duracion-ciclo (t-rojo t-amarillo t-verde)
+(defun duracion-ciclo-intermitente (t-rojo t-amarillo t-verde)
   (+ t-rojo t-amarillo t-verde (* 3 3)))
 
 ;; ========================================================
