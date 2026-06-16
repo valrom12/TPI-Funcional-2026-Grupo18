@@ -142,3 +142,186 @@
   )
 )
 
+;; =================================================================
+;; REQUERIMIENTO 7: Aseguramiento de la calidad
+;; FUNCION: asfuramiento-calidad
+;; NATURALEZA: Impura
+;; ESTRATEGIA: Función de Orden Superior
+;; IMPACTO: No destructiva
+;; =================================================================
+
+;; -----------------------------------------------------------------
+;; PRUEBAS PARA EL REQUERIMIENTO 1: transicion
+;; -----------------------------------------------------------------
+
+(transicion 'en-rojo 'verde)
+
+(transicion 'en-rojo 'amarillo)
+
+;; -----------------------------------------------------------------
+;; PRUEBAS PARA EL REQUERIMIENTO 2: timer
+;; -----------------------------------------------------------------
+
+(timer 50)
+;; Devuelve: EN-ROJO
+
+(timer 100)
+;; Devuelve: EN-VERDE
+
+(timer 212)
+;; Devuelve: EN-AMARILLO
+
+;; -----------------------------------------------------------------
+;; PRUEBAS PARA EL REQUERIMIENTO 3: auditoria-cambio
+;; -----------------------------------------------------------------
+
+(auditoria-cambio 1700000000 'en-rojo 'en-verde)
+
+(auditoria-cambio 0 "ROJO" "VERDE")
+
+;; -----------------------------------------------------------------
+;; PRUEBAS PARA EL REQUERIMIENTO 4a: duracion-ciclo
+;; -----------------------------------------------------------------
+
+
+(duracion-ciclo 90 6 120)
+
+(duracion-ciclo 45.5 3.2 60.0)
+;; Devuelve: 108.7
+
+;; Generación de Errores: Pasar argumentos que no sean números al operador aritmético +
+;; (duracion-ciclo 90 "6 segundos" 120) ;; ERROR: "6 segundos" no es un número.
+
+
+;; -----------------------------------------------------------------
+;; PRUEBAS PARA EL REQUERIMIENTO 4b: recomendacion-ciclo
+;; -----------------------------------------------------------------
+
+;; Camino Normal: Duración óptima intermedia
+(recomendacion-ciclo 90)
+
+(recomendacion-ciclo 20)
+
+(recomendacion-ciclo 180)
+
+;; -----------------------------------------------------------------
+;; PRUEBAS PARA EL REQUERIMIENTO 5: ciclos-por-tiempo
+;; -----------------------------------------------------------------
+
+
+(ciclos-por-tiempo 60)
+
+(ciclos-por-tiempo 2)
+
+;; -----------------------------------------------------------------
+;; PRUEBAS PARA EL REQUERIMIENTO 6: distribucion-temporal
+;; -----------------------------------------------------------------
+
+(distribucion-temporal) ;; Devuelve: ((ROJO 41.666668) (AMARILLO 2.7777777) (VERDE 55.555557))
+
+;; Camino Alternativo: Al no poseer parámetros de entrada, no presenta caminos alternativos de ejecución.
+
+
+;; -----------------------------------------------------------------
+;; ITERACION 2
+;; -----------------------------------------------------------------
+
+;; ========================================================
+;; FUNCIÓN: transicion
+;; NATURALEZA: Pura
+;; ESTRATEGIA: Función Predicado
+;; IMPACTO: No destructiva
+;; NOTA: Incluye estado en-amarillo-intermitente entre cada transición
+;; ========================================================
+
+(defun transicion (color-actual cambiar-a)
+  (cond
+    ((and (equal color-actual 'en-rojo) (equal cambiar-a 'en-amarillo-intermitente))
+     (list color-actual "cambiar-a-amarillo-intermitente"))
+
+    ((and (equal color-actual 'en-amarillo-intermitente) (equal cambiar-a 'en-verde))
+     (list color-actual "cambiar-a-verde"))
+
+    ((and (equal color-actual 'en-verde) (equal cambiar-a 'en-amarillo-intermitente))
+     (list color-actual "cambiar-a-amarillo-intermitente"))
+
+    ((and (equal color-actual 'en-amarillo-intermitente) (equal cambiar-a 'en-amarillo))
+     (list color-actual "cambiar-a-amarillo"))
+
+    ((and (equal color-actual 'en-amarillo) (equal cambiar-a 'en-amarillo-intermitente))
+     (list color-actual "cambiar-a-amarillo-intermitente"))
+
+    ((and (equal color-actual 'en-amarillo-intermitente) (equal cambiar-a 'en-rojo))
+     (list color-actual "cambiar-a-rojo"))
+
+    (t
+     (list color-actual 'accion-por-defecto))))
+
+;; ========================================================
+;; FUNCIÓN: timer
+;; NATURALEZA: Pura
+;; ESTRATEGIA: Función Predicado
+;; IMPACTO: No destructiva
+;; NOTA: Ciclo de 225s con intermitencias entre cada transición
+;; ========================================================
+
+(defun timer (tiempou)
+  (let ((resto (mod tiempou 225)))
+    (cond
+      ((< resto 90)  'en-rojo)                
+      ((< resto 93)  'en-amarillo-intermitente)   
+      ((< resto 213) 'en-verde)                  
+      ((< resto 216) 'en-amarillo-intermitente)   
+      ((< resto 222) 'en-amarillo)                
+      (t             'en-amarillo-intermitente)   
+      )))
+
+;; ========================================================
+;; FUNCIÓN: duracion-ciclo
+;; NATURALEZA: Pura
+;; ESTRATEGIA: Función Simple
+;; IMPACTO: No destructiva
+;; NOTA: Incluye 3 períodos de intermitencia de 3s cada uno
+;; ========================================================
+
+(defun duracion-ciclo (t-rojo t-amarillo t-verde)
+  (+ t-rojo t-amarillo t-verde (* 3 3)))
+
+;; ========================================================
+;; EXTENSION 2: Persistencia de Datos
+ ;; FUNCION: informe
+ ;; NATURALEZA: Impura
+ ;; ESTRATEGIA: Funciones de Orden Superior (mapc) 
+;; IMPACTO: No destructiva
+ ;; ========================================================
+
+(defun informe (datos)
+ (with-open-file (stream "informe-ejecucion-semaforo.txt"
+ :direction :output
+ :if-exists :supersede
+ :if-does-not-exist :create)
+ (format stream "Informe de Ejecución del Sistema Semafórico~%")
+ (format stream "=========================================~%")
+ ;; Se utiliza mapc por ser la función de orden superior óptima para iterar aplicando
+ ;; efectos secundarios sin generar una lista nueva en memoria. 
+(mapc #'(lambda (registro)
+ (let ((fecha-hora (first registro)) 
+(color-anterior (second registro)) 
+(color-nuevo (third registro)))
+ (format stream "~A - Transición: ~A → ~A~%" 
+fecha-hora color-anterior color-nuevo))) datos) 
+(format stream "~%--- Fin del Informe ---")))
+;; Camino Normal: Se pasa una lista con registros simulados (con fechas legibles ya procesadas) ;; Ejecución:
+ ;; (informe '(("2026-06-04 14:30:15" "ROJO" "VERDE")
+ ;; ("2026-06-04 14:32:15" "VERDE" "AMARILLO") 
+;; ("2026-06-04 14:32:21" "AMARILLO" "ROJO"))) 
+;; Devuelve: "--- Fin del Informe ---" y crea el archivo "informe-ejecucion-semaforo.txt"
+
+;; Camino Alternativo: Lista de datos vacia (el sistema no entra en el mapc y genera un informe limpio) 
+;; Ejecucion:
+ ;; (informe nil)
+ ;; Devuelve: "--- Fin del Informe ---" con la cabecera y el cierre del archivo vacíos
+
+;; Generación de Errores: Pasar un atomo en lugar de una lista estructurada impedira que mapc opere.
+ ;; (informe "registro-unico") 
+;; ERROR: El argumento no es una lista sobre la cual iterar
