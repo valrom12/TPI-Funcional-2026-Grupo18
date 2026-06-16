@@ -3,15 +3,16 @@
 ## Trabajo practico integrador 2026: Programacion Funcional
 **Grupo:** 18
 **Fecha de entrega**: 16 de junio
-**Lenguaje asignado**: Erlang
+**Lenguaje principal:** Common Lisp
+**Lenguaje de comparacion:** Erlang
 
 ## Integrantes 
 
-Gonzalez, Rocio Anabel - @Anabel0710
-Romani, Valentino - @valrom12
-Gomez, Matias Gabriel - @MatiasGabriel
-Lafuente, Noelia Magali -  @
-Bereciartua Serpa, Osvaldo Agustin - @
+- Gonzalez, Rocio Anabel - @Anabel0710
+- Romani, Valentino - @valrom12
+- Gomez, Matias Gabriel - @MatiasGabriel
+- Lafuente, Noelia Magali -  @
+- Bereciartua Serpa, Osvaldo Agustin - @
 
 ## Objetivo
 El objetivo es modelar un sistema de semáforos inteligentes utilizando **Common Lisp** utilizando los principios del paradigma funcional:
@@ -55,14 +56,57 @@ Ademas, incluye auditoría con fechas legibles gracias a la librería **local-ti
 * casos alternativos 
 * casos invalidos
 
+
+## Comparativa con Erlang
+
+La carpeta `comparativa/` contiene una reimplementación parcial del sistema en Erlang, incluyendo las funciones `transicion` y `timer`, con el objetivo de analizar diferencias sintácticas y conceptuales entre ambos lenguajes funcionales.
+
 ## Tecnologias usadas: 
 
-* Cammon Lisp
+* Common Lisp
 * local-time
 * Quicklisp
 * Git 
 * GitHub 
 
+## Dependencias
+
+Para ejecutar el proyecto se requiere:
+
+- SBCL
+- Quicklisp
+- local-time
+
+Instalación:
+
+```lisp
+(ql:quickload :local-time)
+```
+
+## Ejecucion
+
+1. Instalar SBCL y Quicklisp.
+2. Clonar el repositorio.
+3. Abrir el archivo `core.lisp`.
+4. Cargar el archivo en el intérprete de Common Lisp.
+5. Ejecutar las funciones de prueba.
+
+Ejemplos:
+
+```lisp
+(transicion 'en-rojo 'verde)
+
+(timer 100)
+
+(auditoria-cambio 1717520000 'en-rojo 'en-verde)
+
+(duracion-ciclo 90 6 120)
+
+(recomendacion-ciclo 216)
+
+(ciclos-por-tiempo 15)
+
+(distribucion-temporal)
 
 ## Estructura del repositorio
 ```
@@ -74,7 +118,7 @@ TPI-Funcional-2026-Grupo18/
 │   └── solucion.erl
 │
 ├── docs/
-│   ├── INFORME.md
+│   ├── INFORME.pdf
 │   └── HONOR.md
 │
 └── README.md
