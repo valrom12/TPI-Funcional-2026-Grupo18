@@ -234,7 +234,7 @@
 ;; NOTA: Incluye estado en-amarillo-intermitente entre cada transición
 ;; ========================================================
 
-(defun transicion (color-actual cambiar-a)
+(defun transicion-v2 (color-actual cambiar-a)
   (cond
     ((and (equal color-actual 'en-rojo) (equal cambiar-a 'en-amarillo-intermitente))
      (list color-actual "cambiar-a-amarillo-intermitente"))
@@ -265,7 +265,7 @@
 ;; NOTA: Ciclo de 225s con intermitencias entre cada transición
 ;; ========================================================
 
-(defun timer (tiempou)
+(defun timer-v2 (tiempou)
   (let ((resto (mod tiempou 225)))
     (cond
       ((< resto 90)  'en-rojo)                
@@ -284,6 +284,6 @@
 ;; NOTA: Incluye 3 períodos de intermitencia de 3s cada uno
 ;; ========================================================
 
-(defun duracion-ciclo (t-rojo t-amarillo t-verde)
+(defun duracion-ciclo-v2 (t-rojo t-amarillo t-verde)
   (+ t-rojo t-amarillo t-verde (* 3 3)))
 
