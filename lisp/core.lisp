@@ -357,3 +357,8 @@ fecha-hora color-anterior color-nuevo))) datos)
             color-nuevo)
   )
 )
+;; Llamada de prueba
+(auditoria-cambio 1781631000 'en-verde 'en-amarillo)
+
+;; Salida esperada en consola:
+;; [2026-06-16 14:30:00] la luz ha cambiado de EN-VERDE a EN-AMARILLO
