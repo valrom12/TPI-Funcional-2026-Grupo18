@@ -31,7 +31,7 @@ Ademas, incluye auditoría con fechas legibles gracias a la librería **local-ti
 
 
 ## RECURSOS:
-* Informe: C:\Users\2299r\OneDrive\Escritorio\TPI-Funcional-2026-Grupo18\docs\INFORME.md 1.pdf
+* Informe: \TPI-Funcional-2026-Grupo18\docs\INFORME.md 1.pdf
 * Video de presentacion: 
 https://youtu.be/ryHYdYl_DeA?si=KLjKHfmlXdUIvgOU
 
