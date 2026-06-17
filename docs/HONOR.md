@@ -41,7 +41,7 @@ Como parte de nuestra formación profesional y ética académica, declaramos de 
 
 ---
 
-### Integrante 3: Matias Gabriel Gomez – Usuario GitHub: [Completar]
+### Integrante 3: Matias Gabriel Gomez – Usuario GitHub: [MatiasGabriel]
 1. **Código en Common Lisp (Fase 1 y 2)**
 - [ ] Desarrollo 100% Humano
 - [x] Asistencia de IA (Co-piloto)
