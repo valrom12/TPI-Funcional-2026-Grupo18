@@ -80,16 +80,16 @@ Como parte de nuestra formación profesional y ética académica, declaramos de 
 ### Integrante 5: Osvaldo Agustin Bereciartua Serpa – Usuario GitHub: [Completar]
 1. **Código en Common Lisp (Fase 1 y 2)**
 - [ ] Desarrollo 100% Humano
-- [ ] Asistencia de IA (Co-piloto)
+- [x] Asistencia de IA (Co-piloto)
 - [ ] Generación Completa por IA
 
 2. **Código del Lenguaje Asignado (Erlang – Fase 3)**
 - [ ] Desarrollo 100% Humano
-- [ ] Asistencia de IA
+- [x] Asistencia de IA
 - [ ] Generación Completa por IA
 
 3. **Redacción del Informe y Respuestas Teóricas**
-- [ ] Autoría Propia
+- [x] Autoría Propia
 - [ ] Redacción Asistida / Generada
 - [ ] Generación completa por IA
 
