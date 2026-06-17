@@ -351,7 +351,7 @@ fecha-hora color-anterior color-nuevo))) datos)
                     (:hour 2) ":" (:min 2) ":" (:sec 2) ))))
 
     (format t 
-            "~A la luz ha cambiado de ~A a ~A~%" 
+            "~A : la luz ha cambiado de ~A a ~A~%" 
             fecha 
             color-anterior 
             color-nuevo)
@@ -361,4 +361,4 @@ fecha-hora color-anterior color-nuevo))) datos)
 (auditoria-cambio 1781631000 'en-verde 'en-amarillo)
 
 ;; Salida esperada en consola:
-;; [2026-06-16 14:30:00] la luz ha cambiado de EN-VERDE a EN-AMARILLO
+;; 2026-06-16 14:30:00 : la luz ha cambiado de EN-VERDE a EN-AMARILLO
