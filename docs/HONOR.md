@@ -23,7 +23,7 @@ Como parte de nuestra formación profesional y ética académica, declaramos de 
 
 ---
 
-### Integrante 2: Romani Valentino – Usuario GitHub: [Completar]
+### Integrante 2: Romani Valentino – Usuario GitHub: [valrom12]
 1. **Código en Common Lisp (Fase 1 y 2)**
 - [ ] Desarrollo 100% Humano
 - [x] Asistencia de IA (Co-piloto)
