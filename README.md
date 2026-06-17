@@ -29,13 +29,13 @@ El objetivo es modelar un sistema de semáforos inteligentes utilizando **Common
 
 Ademas, incluye auditoría con fechas legibles gracias a la librería **local-time** y una comparativa con Erlang.
 
-```
-# RECURSOS:
+
+## RECURSOS:
 * Informe: C:\Users\2299r\OneDrive\Escritorio\TPI-Funcional-2026-Grupo18\docs\INFORME.md 1.pdf
 * Video de presentacion: 
 https://youtu.be/ryHYdYl_DeA?si=KLjKHfmlXdUIvgOU
 
-```
+
 
 # Funcionalidades implementadas:
 
