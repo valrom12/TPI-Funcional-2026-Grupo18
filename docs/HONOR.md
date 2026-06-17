@@ -30,13 +30,13 @@ Como parte de nuestra formación profesional y ética académica, declaramos de 
 - [ ] Generación Completa por IA
 
 2. **Código del Lenguaje Asignado (Erlang – Fase 3)**
-- [ ] Desarrollo 100% Humano
-- [x] Asistencia de IA
+- [x] Desarrollo 100% Humano
+- [ ] Asistencia de IA
 - [ ] Generación Completa por IA
 
 3. **Redacción del Informe y Respuestas Teóricas**
-- [ ] Autoría Propia
-- [x] Redacción Asistida / Generada
+- [x] Autoría Propia
+- [ ] Redacción Asistida / Generada
 - [ ] Generación completa por IA
 
 ---
@@ -53,8 +53,8 @@ Como parte de nuestra formación profesional y ética académica, declaramos de 
 - [ ] Generación Completa por IA
 
 3. **Redacción del Informe y Respuestas Teóricas**
-- [ ] Autoría Propia
-- [x] Redacción Asistida / Generada
+- [x] Autoría Propia
+- [ ] Redacción Asistida / Generada
 - [ ] Generación completa por IA
 
 ---
