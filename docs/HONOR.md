@@ -77,7 +77,7 @@ Como parte de nuestra formación profesional y ética académica, declaramos de 
 
 ---
 
-### Integrante 5: Osvaldo Agustin Bereciartua Serpa – Usuario GitHub: [Completar]
+### Integrante 5: Osvaldo Agustin Bereciartua Serpa – Usuario GitHub: [agustin-bereciartua]
 1. **Código en Common Lisp (Fase 1 y 2)**
 - [ ] Desarrollo 100% Humano
 - [x] Asistencia de IA (Co-piloto)
